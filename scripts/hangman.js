@@ -1,23 +1,26 @@
 /* hangman JS */
 
-let arrayNumber = null;
+
 let selectedWord = '';
 let selectedHint = '';
 const correctLetters = [];
 const wrongLetters = [];
+
 const displayWords = document.getElementById('word');
 const numberWrong = document.getElementById('wrong');
 const displayHint = document.getElementById('hints');
 const imagePath = 'images/hangmantree-';
 let wrongNumber = wrongLetters.length;
-let innerWord = null;
+
+
+// popUp hide
 const youLost = document.getElementById('youLostPop');
 youLost.style.display = "none";
 
 const youWon = document.getElementById('youWonPop');
 youWon.style.display = "none";
 
-
+// fade in image
 
 const delay = 1000;
 const fadeIn = document.getElementById('hanged');
@@ -39,16 +42,80 @@ setTimeout(function(){
 }, delay);
 
 
+// object word
 
-/* non object words and such */
 
-const wordly = ['typically', 'respect', 'hadoop', 'expression', 'construct', 'function'];
-const hintMe = ['Most often', 'A feeling', 'framework', 'Conveys a meaning', 'To build','Input & output'  ];
+
+
+ class Word {
+   constructor (word, hint){
+     this.word = word;
+     this.hint = hint;
+    }
+
+   wordIs (){
+     return this.word;
+    }
+
+    hintIs (){
+     return this.hint;
+    }
+
+
+ }
+
+
+
+
+/* object library */
+
+class Library {
+    constructor (){
+      this.words = ['typically', 'respect', 'hadoop', 'expression', 'construct', 'function', 'earth', 'mettle'];
+      this.hints = ['Most often', 'A feeling', 'framework', 'Conveys a meaning', 'To build','Input & output', 'Third planet from the sun', 'strenght of character'  ];
+
+      this.combo = [];
+
+      for (let counter = 0, libraryCounter = this.words.length;  libraryCounter > counter; counter++  ){
+        let catalog = new Word(this.words[counter], this.hints[counter]);
+        this.combo.push(catalog);
+      }
+    }
+}
+
+
+
+Library.prototype.chosen = function(){
+
+  let j, x, i;
+
+  for (i = this.combo.length - 1; i > 0; i--) {
+
+      j = Math.floor(Math.random() * (i + 1));
+      x = this.combo[i];
+
+      this.combo[i] = this.combo[j];
+      this.combo[j] = x;
+  }
+
+  return this.combo[j];
+}
+
+// using that object
+
+const wordCombo = new Library();
+let newTry = wordCombo.chosen();
+let newWord = newTry.wordIs();
+let newHint = newTry.hintIs();
+
+
+// random generator
+
 
 function randomGen (){
-arrayNumber = Math.floor(Math.random()*wordly.length);
-selectedWord = wordly[arrayNumber];
-selectedHint = hintMe[arrayNumber];
+
+selectedWord = newWord;
+selectedHint = newHint;
 displayHint.innerHTML = `${selectedHint}`;
 document.getElementById('wordWas').innerHTML = ` ${selectedWord}`;
 }
@@ -66,7 +133,7 @@ const numOfTries = 6;
 const numberOfGuesses = document.getElementById('numberOfTries');
 numberOfGuesses.innerHTML = `${numOfTries}`;
 
-// random generater
+
 
 
 
@@ -88,7 +155,7 @@ function gererateKeyboard (){
 
 
 
-// class toggle
+
 
 
 
@@ -128,37 +195,8 @@ function handleGuess (chosenLetter){
 
 
 
-// object splash
 
 
- class Word {
-   constructor (word, hint){
-     this.word = word;
-     this.hint = hint;
-   }
-
-
- }
-
-
-
-
-/* object library */
-class Library {
-    constructor (){
-      this.words = ['typically', 'respect', 'hadoop', 'expression', 'construct', 'function'];
-      this.hints = ['Most often', 'A feeling', 'framework', 'Conveys a meaning', 'To build','Input & output'  ];
-
-      this.combo = [];
-
-      for (let counter = 0, libraryCounter = this.words.length;  libraryCounter > counter; counter++  ){
-        let catalog = new Word(this.words[counter], this.hints[counter]);
-        this.combo.push(catalog);
-      }
-    }
-}
-
-const wordCombo = new Library();
 
 
 
@@ -170,26 +208,20 @@ const wordCombo = new Library();
 
 //show hidden word
 function displayW(){
- displayWords.innerHTML = selectedWord.split('').map(letter =>(correctLetters.indexOf(letter) >= 0 ? letter : "_" )).join('');
-  innerWord = displayWords.innerText.replace(/\n/g,'') ;
+  displayWords.innerHTML = selectedWord.split('').map(letter =>(correctLetters.indexOf(letter) >= 0 ? letter : "_" )).join('');
 
-if (innerWord === selectedWord){
+  letterMatch = displayWords.innerText.replace(/\n/g,'');
+  if (letterMatch === selectedWord){
    youWon.style.display = 'block';
-}
-
-
-
-
-
-}
-
-function correctWord (){
-  if (innerWord === selectedWord ){
-     youWon.style.diplay = 'block';
   }
+
+
+
+
 }
 
-// hints
+
+
 
 
 
@@ -231,28 +263,13 @@ const playLost = document.getElementById('play_againL');
 
 
 playWin.addEventListener("click", function(){
-  randomGen();
-  youWon.style.display = "none";
-  wrongLetters.splice(0);
-  correctLetters.splice(0);
-
-  displayW();
-  document.getElementById('hanged').src = "images/hangmantree-0.png";
-  updateWrongLetter();
- gererateKeyboard();
+location.reload();
 
 });
 
 
 playLost.addEventListener("click", function(){
-  randomGen();
-  youLost.style.display = "none";
-  wrongLetters.splice(0);
-  correctLetters.splice(0);
-  displayW();
-  updateWrongLetter();
-  document.getElementById('hanged').src = "images/hangmantree-0.png";
-  gererateKeyboard();
+location.reload();
 
 });
 
