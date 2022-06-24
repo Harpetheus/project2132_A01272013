@@ -1,0 +1,284 @@
+@import url("normalize.css");
+html {
+  box-sizing: border-box;
+  font-size: 2vw;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+header {
+  background-color: #1B2430;
+}
+
+main {
+  margin: 0;
+  flex: 1;
+  background-image: url("../images/paperbg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+h1 {
+  font-family: "Bangers", cursive;
+  letter-spacing: 2px;
+  font-size: 3.5rem;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0px;
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #1B2430;
+  margin-bottom: 15px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: white;
+  padding: 5px;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  color: #1B2430;
+}
+
+footer {
+  background-color: #1B2430;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  font-size: x-small;
+  padding: 5px;
+}
+
+section {
+  padding: 20px;
+}
+
+p {
+  padding: 20px;
+  font-size: 1.5rem;
+  color: #1B2430;
+  margin-top: 30px;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FAF0D7;
+}
+
+footer p {
+  padding: 15px;
+  font-size: 16px;
+  margin: 0;
+  color: white;
+}
+
+/* image selectors */
+.hangman_container {
+  width: 80%;
+}
+
+#hanged {
+  opacity: 0;
+}
+
+/* display word */
+#word {
+  display: inline-flex;
+  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 50px;
+  margin: 0 3px;
+}
+
+.wordLetter p {
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+/* guesses selectors */
+.word_display_con {
+  padding: 5px;
+}
+
+.incorrect {
+  display: flex;
+  justify-content: center;
+}
+
+.incorrect p {
+  color: white;
+  margin: 0;
+  padding: 5px;
+  font-size: 1rem;
+  background-color: #B22727;
+  border-radius: 15px;
+  width: 200px;
+}
+
+.hint_box p {
+  color: #B22727;
+  margin-top: 0;
+}
+
+/*  button selectors  */
+.buttons {
+  border-radius: 7px;
+  border-color: #1B2430;
+  background-color: #1B2430;
+  padding: 5px;
+  width: 30px;
+  color: white;
+  font-size: 18px;
+  margin: 2px;
+}
+
+.buttons:disabled {
+  border-radius: 7px;
+  border-color: #73777B;
+  background-color: #73777B;
+  padding: 5px;
+  width: 30px;
+  color: white;
+  font-size: 18px;
+  margin: 2px;
+}
+
+.buttons:hover {
+  border-color: #73777B;
+  background-color: #73777B;
+}
+
+.button_row {
+  margin: 10px;
+}
+
+/*You lost popup*/
+.playAgainCon {
+  background-color: white;
+  border-radius: 15px;
+  width: 80%;
+  padding: 30px;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  right: 10%;
+}
+
+.playAgainCon img {
+  width: 70%;
+}
+
+.playAgainCon button {
+  color: white;
+  margin: 0;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 15px;
+  border-color: #B22727;
+  background-color: #B22727;
+}
+
+#closePopupL {
+  all: unset;
+}
+
+#closePopupW {
+  all: unset;
+}
+
+#closePopupL:hover {
+  color: #B22727;
+}
+
+#closePopupW:hover {
+  color: #B22727;
+}
+
+.popupClose {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.playAgainCon button:hover {
+  color: #B22727;
+  margin: 0;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 15px;
+  border-color: #B22727;
+  background-color: white;
+}
+
+/*  bottom div*/
+.bottom_div {
+  margin-bottom: 30px;
+}
+
+/* ID selectors */
+#wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #EEEEEE;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  #widescreen {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  section {
+    padding: 100px;
+  }
+}
+@media (min-width: 800px) {
+  .playAgainCon {
+    background-color: white;
+    border-radius: 15px;
+    width: 40%;
+    padding: 30px;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+  }
+}
+@media (min-width: 1000px) {
+  html {
+    font-size: 1.5vw;
+  }
+}
+@media (min-width: 1200px) {
+  html {
+    font-size: 1vw;
+  }
+}

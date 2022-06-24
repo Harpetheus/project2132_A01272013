@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Hangman game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Raleway:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="http://code.jquery.com/jquery-3.4.1.min.js" defer></script>
+  <script src="scripts/hangman.js" defer></script>
+</head>
+
+<body>
+  <div id="wrapper">
+    <header>
+      <h1>Hangman</h1>
+    </header>
+    <main>
+
+      <section id="widescreen">
+        <div class="hangman_container">
+          <div>
+            <img src="images/hangmantree-0.png" alt="hangman" id="hanged">
+          </div>
+
+        </div>
+        <div id="youLostPop" class="playAgainCon">
+          <div class="popupClose">
+            <button type="button" name="button" id="closePopupL"><strong>X</strong></button>
+          </div>
+          <img src="images/hangmantree_very_dead.png" alt="hangman">
+          <h2>You lost!</h2>
+          <p>The word was:<span id="wordWas"></span></p>
+          <button type="button" name="button" id="play_againL">Play again</button>
+        </div>
+
+
+        <div id="youWonPop" class="playAgainCon">
+          <div class="popupClose">
+            <button type="button" name="button" id="closePopupW"><strong>X</strong></button>
+          </div>
+          <img src="images/hangmantree_free.png" alt="hangman">
+          <h2>You Won!<br /> Congratulations</h2>
+          <button type="button" name="button" id="play_againW">Play again</button>
+        </div>
+
+
+
+        <div class="word_display_con">
+          <div class="wordLetter"><p><span id="word"></span></p></div>
+          <div class="incorrect"><p>Incorect guesses: <span id="wrong">0</span>/<span id="numberOfTries"></span></p></div>
+          <div class="hint_box"><p>Hint: <span id="hints"></span></p></div>
+          <div id="keyboard"></div>
+        </div>
+
+
+
+
+        <div class="bottom_div">
+          <p>Guess a letter from the mystery word.<br /> You have a limited number of guesses, so choose wizely. <br /> Good luck!</p>
+        </div>
+
+      </section>
+    </main>
+    <footer>
+      <p>Copyright 2022 | <a href="https://www.flaticon.com/free-icons/suicide" title="suicide icons">Suicide icons created by Smashicons - Flaticon</a></p>
+
+    </footer>
+  </div>
+</body>
+
+</html>
