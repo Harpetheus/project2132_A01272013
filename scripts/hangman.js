@@ -125,16 +125,10 @@ randomGen();
 
 
 
-
-
-
 // guesses
 const numOfTries = 6;
 const numberOfGuesses = document.getElementById('numberOfTries');
 numberOfGuesses.innerHTML = `${numOfTries}`;
-
-
-
 
 
 
@@ -156,20 +150,13 @@ function gererateKeyboard (){
 
 
 
-
-
-
-
-
 // handling numberOfGuesses
 
 function handleGuess (chosenLetter){
   correctLetters.indexOf(chosenLetter) === -1 ? correctLetters.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true,);
 
-
-
-     if (selectedWord.indexOf(chosenLetter) >= 0){
+   if (selectedWord.indexOf(chosenLetter) >= 0){
          displayW();
 
 
@@ -181,27 +168,7 @@ function handleGuess (chosenLetter){
       }
 
 
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -216,13 +183,7 @@ function displayW(){
   }
 
 
-
-
 }
-
-
-
-
 
 
 
@@ -236,8 +197,6 @@ function updateWrongLetter (){
    }
 
 }
-
-
 
 
 
