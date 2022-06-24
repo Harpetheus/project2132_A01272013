@@ -4,7 +4,6 @@ let arrayNumber = null;
 let selectedWord = '';
 let selectedHint = '';
 const correctLetters = [];
-const anotherLetter = [];
 const wrongLetters = [];
 const displayWords = document.getElementById('word');
 const numberWrong = document.getElementById('wrong');
@@ -105,8 +104,7 @@ function handleGuess (chosenLetter){
 
      if (selectedWord.indexOf(chosenLetter) >= 0){
          displayW();
-         anotherLetter.push(chosenLetter);
-         correctWord ();
+
 
       }else if (selectedWord.indexOf(chosenLetter) >= -1){
          wrongLetters.push(chosenLetter);
@@ -172,10 +170,12 @@ const wordCombo = new Library();
 
 //show hidden word
 function displayW(){
-  innerWord = selectedWord.split('').map(letter =>(correctLetters.indexOf(letter) >= 0 ? letter : "_" )).join('');
-  displayWords.innerHTML = innerWord ;
+ displayWords.innerHTML = selectedWord.split('').map(letter =>(correctLetters.indexOf(letter) >= 0 ? letter : "_" )).join('');
+  innerWord = displayWords.innerText.replace(/\n/g,'') ;
 
-
+if (innerWord === selectedWord){
+   youWon.style.display = 'block';
+}
 
 
 
